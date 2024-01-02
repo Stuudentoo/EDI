@@ -11,48 +11,50 @@
             <h1>Projekt Grupowy EWD</h1>
             <p></p>
         </section>
-        <section><script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <canvas id="myChart1"></canvas>
-  <canvas id="myChart2"></canvas>
-  <script>// Fetch data from Mockaroo API
-    window.onload = function(){
-    fetch('https://my.api.mockaroo.com/xml.json?key=1490ee30')
-    .then(response => response.json())
-    .then(data => {
-        // Prepare data for charts
-        let labels = data.map((item, index) => `Data ${index + 1}`);
-        let dataset = data.map(item => item['Punkty z kolokwium z programowania']);
-    
-        // Create charts
-        let ctx1 = document.getElementById('myChart1').getContext('2d');
-        let chart1 = new Chart(ctx1, {
-            type: 'line',  // or 'bar', 'pie', etc.
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Punkty z kolokwium z programowania',
-                    data: dataset,
-                    // other chart options...
-                }]
-            },
-            // other chart options...
-        });
-    
-        let ctx2 = document.getElementById('myChart2').getContext('2d');
-        let chart2 = new Chart(ctx2, {
-            type: 'bar',  // or 'line', 'pie', etc.
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Punkty z kolokwium z programowania',
-                    data: dataset,
-                    // other chart options...
-                }]
-            },
-            // other chart options...
-        });
-    })
-    .catch(error => console.error('Error:', error));}
-  </script></section>
+        <section>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+              <canvas id="myChart1"></canvas>
+              <canvas id="myChart2"></canvas>
+              <script>// Fetch data from Mockaroo API
+                window.onload = function(){
+                fetch('https://my.api.mockaroo.com/xml.json?key=1490ee30')
+                .then(response => response.json())
+                .then(data => {
+                    // Prepare data for charts
+                    let labels = data.map((item, index) => `Data ${index + 1}`);
+                    let dataset = data.map(item => item['Punkty z kolokwium z programowania']);
+                
+                    // Create charts
+                    let ctx1 = document.getElementById('myChart1').getContext('2d');
+                    let chart1 = new Chart(ctx1, {
+                        type: 'line',  // or 'bar', 'pie', etc.
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Punkty z kolokwium z programowania',
+                                data: dataset,
+                                // other chart options...
+                            }]
+                        },
+                        // other chart options...
+                    });
+                
+                    let ctx2 = document.getElementById('myChart2').getContext('2d');
+                    let chart2 = new Chart(ctx2, {
+                        type: 'bar',  // or 'line', 'pie', etc.
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Punkty z kolokwium z programowania',
+                                data: dataset,
+                                // other chart options...
+                            }]
+                        },
+                        // other chart options...
+                    });
+                })
+                .catch(error => console.error('Error:', error));}
+            </script>
+        </section>
     </body>
 </html>
