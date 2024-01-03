@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html>   
-    <head>
+<html>
+
+<head>
     <title>Projekt Grupowy EWD</title>
-    <meta charset="UTF-8">   
-    </head>
-    
-    
-    <body>
-        <section>
-            <h1>Projekt Grupowy EWD</h1>
-            <p></p>
-        </section>
-        <section>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <section>
+        <h1>Projekt Grupowy EWD</h1>
+        <p></p>
+    </section>
+    <section>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <canvas id="myChart"></canvas>
+        <canvas id="languageChart"></canvas>
+        <script>
+            // Fetch data from Mockaroo API
             window.onload = function () {
                 fetch('https://my.api.mockaroo.com/edi_group_project.json?key=1490ee30')
                     .then(response => response.json())
@@ -42,7 +47,7 @@
                             return acc;
                         }, {});
 
-                        let languageLabels = O;
+                        let languageLabels = Object.keys(languageData);
                         let languageDataset = Object.values(languageData);
 
                         // Create the second chart
@@ -59,8 +64,8 @@
                         });
                     })
                     .catch(error => console.error('Error:', error));
-            }    
+            }
         </script>
-        </section>
-    </body>
+    </section>
+</body>
 </html>
