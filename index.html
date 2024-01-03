@@ -12,49 +12,55 @@
             <p></p>
         </section>
         <section>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-              <canvas id="myChart1"></canvas>
-              <canvas id="myChart2"></canvas>
-              <script>// Fetch data from Mockaroo API
-                window.onload = function(){
-                fetch('https://my.api.mockaroo.com/xml.json?key=1490ee30')
-                .then(response => response.json())
-                .then(data => {
-                    // Prepare data for charts
-                    let labels = data.map((item, index) => `Data ${index + 1}`);
-                    let dataset = data.map(item => item['Punkty z kolokwium z programowania']);
-                
-                    // Create charts
-                    let ctx1 = document.getElementById('myChart1').getContext('2d');
-                    let chart1 = new Chart(ctx1, {
-                        type: 'line',  // or 'bar', 'pie', etc.
-                        data: {
-                            labels: labels,
-                            datasets: [{
-                                label: 'Punkty z kolokwium z programowania',
-                                data: dataset,
-                                // other chart options...
-                            }]
-                        },
-                        // other chart options...
-                    });
-                
-                    let ctx2 = document.getElementById('myChart2').getContext('2d');
-                    let chart2 = new Chart(ctx2, {
-                        type: 'bar',  // or 'line', 'pie', etc.
-                        data: {
-                            labels: labels,
-                            datasets: [{
-                                label: 'Punkty z kolokwium z programowania',
-                                data: dataset,
-                                // other chart options...
-                            }]
-                        },
-                        // other chart options...
-                    });
-                })
-                .catch(error => console.error('Error:', error));}
-            </script>
+            window.onload = function () {
+                fetch('https://my.api.mockaroo.com/edi_group_project.json?key=1490ee30')
+                    .then(response => response.json())
+                    .then(data => {
+                        // Prepare data for the first chart
+                        let earningsLabels = data.map(item => `ID ${item.id}`);
+                        let earningsDataset = data.map(item => item.earnings);
+
+                        // Create the first chart
+                        let ctx = document.getElementById('myChart').getContext('2d');
+                        let earningsChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: earningsLabels,
+                                datasets: [{
+                                    label: 'Income by ID (in PLN)',
+                                    data: earningsDataset,
+                                    backgroundColor: 'rgba(23,83,181, 0.9)',
+                                    borderColor: 'rgba(0,0,0, 0.5)',
+                                    borderWidth: 1
+                                }]
+                            },
+                        });
+
+                        // Prepare data for the second chart (count people by programming language)
+                        let languageData = data.reduce((acc, item) => {
+                            acc[item.favorite_programming_language] = (acc[item.favorite_programming_language] || 0) + 1;
+                            return acc;
+                        }, {});
+
+                        let languageLabels = O;
+                        let languageDataset = Object.values(languageData);
+
+                        // Create the second chart
+                        let languageCtx = document.getElementById('languageChart').getContext('2d');
+                        let languageChart = new Chart(languageCtx, {
+                            type: 'pie',
+                            data: {
+                                labels: languageLabels,
+                                datasets: [{
+                                    label: 'Number of People by Programming Language',
+                                    data: languageDataset,
+                                }]
+                            },
+                        });
+                    })
+                    .catch(error => console.error('Error:', error));
+            }    
+        </script>
         </section>
     </body>
 </html>
