@@ -4,12 +4,24 @@
 <head>
     <title>Projekt Grupowy EWD</title>
     <meta charset="UTF-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="myCSS.css">
+    <script src="script.js"></script>
 </head>
 
 <body>
     <section>
         <h1>Projekt Grupowy EWD</h1>
+        <button id="showSectionButton">Show  Data Section</button>
         <p></p>
+    </section>
+    <section id="hiddenSection" style="display: none;">
+        <div class="container mt-4">
+            <div id="dataContainer" class="mt-4"></div>
+            <canvas id="myChart"></canvas>
+            <canvas id="languageChart"></canvas>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        </div>
     </section>
     <section>
         <img src="lukasz.jpg" widht="400" height="400">
@@ -24,63 +36,20 @@
         <img src="adrian.jpg" widht="400" height="400">
         <p>Nazywam się Adrian Gabryła. Moje zaintersowania to sport oraz informatyka. Bardzo lubię kuchnię włoską. Jestem zadowolony z mojego wyboru studiów.</p>
     </section>
-    <section>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <canvas id="myChart"></canvas>
-        <canvas id="languageChart"></canvas>
-        <script src="script.js"></script>
-        <script>
-            // Fetch data from Mockaroo API
-            window.onload = function () {
-                fetch('https://my.api.mockaroo.com/edi_group_project.json?key=1490ee30')
-                    .then(response => response.json())
-                    .then(data => {
-                        // Prepare data for the first chart
-                        let earningsLabels = data.map(item => `ID ${item.id}`);
-                        let earningsDataset = data.map(item => item.earnings);
-
-                        // Create the first chart
-                        let ctx = document.getElementById('myChart').getContext('2d');
-                        let earningsChart = new Chart(ctx, {
-                            type: 'bar',
-                            data: {
-                                labels: earningsLabels,
-                                datasets: [{
-                                    label: 'Income by ID (in PLN)',
-                                    data: earningsDataset,
-                                    backgroundColor: 'rgba(23,83,181, 0.9)',
-                                    borderColor: 'rgba(0,0,0, 0.5)',
-                                    borderWidth: 1
-                                }]
-                            },
-                        });
-
-                        // Prepare data for the second chart (count people by programming language)
-                        let languageData = data.reduce((acc, item) => {
-                            acc[item.favorite_programming_language] = (acc[item.favorite_programming_language] || 0) + 1;
-                            return acc;
-                        }, {});
-
-                        let languageLabels = Object.keys(languageData);
-                        let languageDataset = Object.values(languageData);
-
-                        // Create the second chart
-                        let languageCtx = document.getElementById('languageChart').getContext('2d');
-                        let languageChart = new Chart(languageCtx, {
-                            type: 'pie',
-                            data: {
-                                labels: languageLabels,
-                                datasets: [{
-                                    label: 'Number of People by Programming Language',
-                                    data: languageDataset,
-                                }]
-                            },
-                        });
-                    })
-                    .catch(error => console.error('Error:', error));
-            }
-        </script>
-    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const showSectionButton = document.getElementById("showSectionButton");
+            const hiddenSection = document.getElementById("hiddenSection");
+    
+            showSectionButton.addEventListener("click", function () {
+                // Toggle the display property of the hidden section
+                hiddenSection.style.display = (hiddenSection.style.display === "none" || hiddenSection.style.display === "") ? "block" : "none";
+    
+                // Update button text based on the visibility of the section
+                showSectionButton.textContent = (hiddenSection.style.display === "none") ? "Show Data Section" : "Hide Data Section";
+            });
+        });
+    </script>
     <section class="section3">
         <h1>Internet</h1>
         <p>Tu możesz wyszukać więcej informacji związanych z naukami programistycznymi.</p>
