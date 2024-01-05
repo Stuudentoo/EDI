@@ -1,0 +1,98 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: rgb(131, 58, 180);
+	background: linear-gradient(
+		90deg,
+		rgba(131, 58, 180, 1) 0%,
+		rgba(252, 69, 153, 1) 100%
+	);
+	font-family: "Roboto", sans-serif;
+	color: #fff;
+	padding: 10px;
+	font-size: 18px;
+}
+
+h1 {
+	font-size: 50px;
+}
+
+main {
+	background-color: rgba(49, 12, 108, 0.402);
+	padding: 30px;
+	border-radius: 5px;
+	width: 100%;
+	height: 100%;
+}
+
+.mainheader {
+	padding-bottom: 50px;
+}
+
+.input {
+	color: #fff;
+	border: 2px solid #fc4599;
+	border-radius: 10px;
+	padding: 10px 25px;
+	background: transparent;
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+
+.btn {
+	background-color: #833ab4;
+	width: 100%;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	height: 45px;
+	padding: 5px;
+	transition: background-color 0.3s;
+}
+
+.image1 {
+	float: left;
+	padding: 20px;
+	width: 200px;
+}
+
+.image2 {
+	float: left;
+	padding: 20px;
+	width: 200px;
+}
+
+.image3 {
+	float: left;
+	padding: 20px;
+	width: 200px;
+}
+
+.image4 {
+	float: left;
+	padding: 20px;
+	width: 200px;
+}
+
+.personal {
+	padding: 20px;
+}
+
+.persona2 {
+	padding: 20px;
+}
+
+.persona3 {
+	padding: 20px;
+}
+
+.persona4 {
+	padding: 20px;
+}
