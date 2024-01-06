@@ -9,11 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
             return response.json();
         })
         .then(data => {
-            // Prepare data for the first chart
+            Chart.defaults.color = '#ebebeb';
             let earningsLabels = data.map(item => `ID ${item.id}`);
             let earningsDataset = data.map(item => item.earnings);
 
-            // Create the first chart
             let ctx = document.getElementById('myChart').getContext('2d');
             let earningsChart = new Chart(ctx, {
                 type: 'bar',
@@ -22,14 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     datasets: [{
                         label: 'Income by ID (in PLN)',
                         data: earningsDataset,
-                        backgroundColor: 'rgba(23,83,181, 0.9)',
-                        borderColor: 'rgba(0,0,0, 0.5)',
+                        backgroundColor: 'rgba(252, 69, 153, 0.9)',
+                        borderColor: 'rgba(131, 58, 180, 0.5)',
                         borderWidth: 1
                     }]
                 },
             });
 
-            // Prepare data for the second chart (count people by programming language)
             let languageData = data.reduce((acc, item) => {
                 acc[item.favorite_programming_language] = (acc[item.favorite_programming_language] || 0) + 1;
                 return acc;
@@ -38,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
             let languageLabels = Object.keys(languageData);
             let languageDataset = Object.values(languageData);
 
-            // Create the second chart
             let languageCtx = document.getElementById('languageChart').getContext('2d');
             let languageChart = new Chart(languageCtx, {
                 type: 'pie',
@@ -47,11 +44,23 @@ document.addEventListener("DOMContentLoaded", function () {
                     datasets: [{
                         label: 'Number of People by Programming Language',
                         data: languageDataset,
+                        backgroundColor: [
+                            'rgba(252, 69, 153, 0.9)', 
+                            'rgba(131, 58, 180, 0.9)',
+                            'rgba(0, 128, 128, 0.9)',
+                            'rgba(255, 215, 0, 0.9)',
+                            'rgba(0, 139, 139, 0.9)',
+                            'rgba(220, 20, 60, 0.9)',
+                            'rgba(65, 105, 225, 0.9)',
+                            'rgba(218, 165, 32, 0.9)',
+                            'rgba(255, 140, 0, 0.9)',
+                            'rgba(34, 139, 34, 0.9)',
+                            'rgba(255, 0, 0)'
+                        ],
                     }]
                 },
             });
 
-            // Display data in the HTML
             displayData(data);
         })
         .catch(error => console.error('Error:', error));
@@ -60,15 +69,13 @@ document.addEventListener("DOMContentLoaded", function () {
 function displayData(data) {
     const dataContainer = document.getElementById("dataContainer");
 
-    // Create a row for each person
     data.forEach(item => {
         const row = document.createElement("div");
         row.className = "row mb-4";
 
-        // Create a card for each data point
         for (const key in item) {
             const col = document.createElement("div");
-            col.className = "col-md-4"; // Adjust the column width as needed
+            col.className = "col-md-4";
 
             const card = document.createElement("div");
             card.className = "card";
