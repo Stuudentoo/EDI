@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Projekt Grupowy EWD</title>
+    <meta charset="UTF-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="myCSS.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <section>
+        <h1>Projekt Grupowy EWD</h1>
+        <button id="showSectionButton">Show  Data Section</button>
+        <p></p>
+    </section>
+    <section id="hiddenSection" style="display: none;">
+        <div class="container mt-4">
+            <div id="dataContainer" class="mt-4"></div>
+            <canvas id="myChart"></canvas>
+            <canvas id="languageChart"></canvas>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        </div>
+    </section>
+    <section>
+        <img src="lukasz.jpg" widht="400" height="400">
+        <p>Nazywam się Łukasz Gałek.Moim hobby jest piłka nożna oraz gry komputerowe. Te studia były moim pierwszym wybrorem. Mam nadzieje , że dzięki nim dostanę prace w IT.</p>
+        <br>
+        <img src="mateusz.jpg" widht="400" height="400">
+        <p>Nazywam się Mateusz Elżbieciak, moje zaintersowania to nauki infotmatyczne, muzyka oraz trening siłowy. Moją ulubioną potrawą jest spaghetti.</p>
+        <br>
+        <img src="mikolaj.jpg" widht="400" height="400">
+        <p>Nazywam się Mikołaj Ekiert. Moje hobby to informatyka, sport i gotowanie. </p>
+        <br>
+        <img src="adrian.jpg" widht="400" height="400">
+        <p>Nazywam się Adrian Gabryła. Moje zaintersowania to sport oraz informatyka. Bardzo lubię kuchnię włoską. Jestem zadowolony z mojego wyboru studiów.</p>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const showSectionButton = document.getElementById("showSectionButton");
+            const hiddenSection = document.getElementById("hiddenSection");
+    
+            showSectionButton.addEventListener("click", function () {
+                // Toggle the display property of the hidden section
+                hiddenSection.style.display = (hiddenSection.style.display === "none" || hiddenSection.style.display === "") ? "block" : "none";
+    
+                // Update button text based on the visibility of the section
+                showSectionButton.textContent = (hiddenSection.style.display === "none") ? "Show Data Section" : "Hide Data Section";
+            });
+        });
+    </script>
+    <section class="section3">
+        <h1>Internet</h1>
+        <p>Tu możesz wyszukać więcej informacji związanych z naukami programistycznymi.</p>
+        <form action="https://www.google.com/search?">
+            <label for="fname">Czego szukasz?:</label><br>
+            <input type="text" id="q" name="q" value=""><br>
+            <input type="submit" value="Szukaj">
+        </form>
+    </section>
+</body>
+</html>
