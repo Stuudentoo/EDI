@@ -46,6 +46,11 @@ main {
 	height: 100%;
 }
 
+.personal2,
+.personal4 {
+    padding: 40px;
+    margin-left: 40px;
+}
 .mainheader {
 	padding-bottom: 50px;
 }
