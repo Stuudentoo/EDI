@@ -21,6 +21,23 @@ h1 {
 	font-size: 50px;
 }
 
+#showSectionButton {
+	display: block;
+	margin: 50px auto;
+	padding: 20px 10px;
+	border: 2px solid #ff1493;
+	background-color: #ff1493;
+	color: #fff; 
+	cursor: pointer;
+	font-size: 16px;
+	border-radius: 10px; 
+	transition: background-color 0.7s, color 0.7s;
+}
+
+#showSectionButton:hover {
+	background-color: #fff;
+	color: #ff1493; 
+}
 main {
 	background-color: rgba(49, 12, 108, 0.402);
 	padding: 30px;
