@@ -20,7 +20,7 @@
         <section class="mainheader">
             <h1>Projekt Grupowy EWD</h1>
         </section>
-        <section>
+        <section style="color: #ebebeb;">
             <section class="personal1">
                 <img src="./lukasz.jpg" class="image1">
                 <p>
@@ -145,12 +145,14 @@
         </section>
         <section>
             <button id="showSectionButton">Show  Data Section</button>
-             <div class="container mt-4">
-            <div id="dataContainer" class="mt-4"></div>
-            <canvas id="myChart"></canvas>
-            <canvas id="languageChart"></canvas>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        </div>
+        </section>
+        <section id="hiddenSection" style="display: none;">
+            <div class="container mt-4">
+                <div id="dataContainer" class="mt-4"></div>
+                <canvas id="myChart"></canvas>
+                <canvas id="languageChart"></canvas>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            </div>
         </section>
         <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -158,10 +160,8 @@
             const hiddenSection = document.getElementById("hiddenSection");
     
             showSectionButton.addEventListener("click", function () {
-                // Toggle the display property of the hidden section
                 hiddenSection.style.display = (hiddenSection.style.display === "none" || hiddenSection.style.display === "") ? "block" : "none";
     
-                // Update button text based on the visibility of the section
                 showSectionButton.textContent = (hiddenSection.style.display === "none") ? "Show Data Section" : "Hide Data Section";
             });
         });
